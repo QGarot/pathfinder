@@ -7,6 +7,9 @@ export class Map {
         this.matrix = [];
     }
 
+    /*
+    Update matrix attribute => Create a 2D array to represent the map.
+     */
     generate() {
         for (let y = 0; y < this.height; y++) {
             this.matrix.push([])
