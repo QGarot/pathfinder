@@ -1,13 +1,13 @@
-export class Tile {
-    constructor(x, y) {
+import { Graphics } from "pixi.js";
+import { mapDim, tileDim, colors} from "./main";
+
+export class Tile extends Graphics {
+    constructor(x, y, color=0xD2D2D2) {
+        super()
         this.x = x;
         this.y = y;
-        this.color = {
-            green: 0xA9F2A9,
-            red: 0xEA6363,
-            grey: 0xD2D2D2,
-            black: 0x000000
-        }
+        this.dim = undefined;
+        this.color = color;
     }
 
     /*
@@ -34,10 +34,13 @@ export class Tile {
     @params coordX/y {number} Coords of top-left corner
     @params dim {number} Dimension of the square
      */
-    draw(canvas, coordX, coordY, dim) {
-        canvas.graphics.lineStyle(1, this.color.black, 1);
-        canvas.graphics.beginFill(this.color.grey);
-        canvas.graphics.drawRect(coordX, coordY, dim, dim)
-        canvas.graphics.endFill()
+    draw(container) {
+        this.lineStyle(1, colors.black, 1);
+        this.beginFill(this.color);
+        this.drawRect(this.x * tileDim, this.y * tileDim, tileDim, tileDim)
+        this.endFill()
+
+        // Add on container
+        container.addChild(this);
     }
 }

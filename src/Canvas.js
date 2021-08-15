@@ -8,7 +8,6 @@ export class Canvas extends PIXI.Application {
             backgroundColor: bgColor
         });
         this.size = size
-        this.graphics = new PIXI.Graphics();
     }
 
     /*
@@ -16,6 +15,5 @@ export class Canvas extends PIXI.Application {
      */
     display() {
         document.body.appendChild(this.view);
-        this.stage.addChild(this.graphics);
     }
 }
